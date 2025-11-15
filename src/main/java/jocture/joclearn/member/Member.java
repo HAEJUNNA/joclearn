@@ -13,15 +13,15 @@ public class Member {
     private String passwordHash;
     private MemberStatus status;
 
-    private Member(String nickname, String email, String password, MemberStatus status) {
+    private Member(String nickname, String email, String passwordHash, MemberStatus status) {
         this.nickname = nickname;
         this.email = email;
-        this.passwordHash = password;
+        this.passwordHash = passwordHash;
         this.status = status;
     }
 
-    public static Member create(String nickname, String email, String password) {
-        return new Member(nickname, email, password, MemberStatus.STANDBY);
+    public static Member create(String nickname, String email, String password, PasswordEncoder passwordEncoder) {
+        return new Member(nickname, email, passwordEncoder.encode(password), MemberStatus.STANDBY);
     }
 
     public void activate() {
@@ -30,5 +30,13 @@ public class Member {
 
     public void deactivate() {
         this.status = MemberStatus.INACTIVE;
+    }
+
+    public void changePassword(String newPassword, PasswordEncoder passwordEncoder) {
+        this.passwordHash = passwordEncoder.encode(newPassword);
+    }
+
+    public boolean verifyPassword(String password, PasswordEncoder passwordEncoder) {
+        return passwordEncoder.matches(password, passwordHash);
     }
 }
