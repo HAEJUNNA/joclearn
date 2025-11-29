@@ -1,7 +1,12 @@
-package jocture.joclearn.member;
+package domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import jocture.joclearn.domain.member.Member;
+import jocture.joclearn.domain.member.MemberStatus;
+import jocture.joclearn.domain.member.PasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,26 +33,26 @@ class MemberTest {
 
     @Test
     void create() {
-        assertThat(member.getStatus()).isEqualTo(MemberStatus.STANDBY);
+        Assertions.assertThat(member.getStatus()).isEqualTo(MemberStatus.STANDBY);
     }
 
     @Test
     void activate() {
         member.activate();
-        assertThat(member.getStatus()).isEqualTo(MemberStatus.ACTIVE);
+        Assertions.assertThat(member.getStatus()).isEqualTo(MemberStatus.ACTIVE);
     }
 
     @Test
     void deactivate() {
         member.deactivate();
-        assertThat(member.getStatus()).isEqualTo(MemberStatus.INACTIVE);
+        Assertions.assertThat(member.getStatus()).isEqualTo(MemberStatus.INACTIVE);
     }
 
     @Test
     void changePassword() {
         String password = "jocture7890";
         member.changePassword(password, passwordEncoder);
-        assertThat(member.getPasswordHash()).isEqualTo(password.toUpperCase());
+        Assertions.assertThat(member.getPasswordHash()).isEqualTo(password.toUpperCase());
     }
 
     @Test

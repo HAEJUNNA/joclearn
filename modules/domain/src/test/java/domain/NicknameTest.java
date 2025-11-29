@@ -1,27 +1,31 @@
-package jocture.joclearn.member;
+package domain;
 
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
+import jocture.joclearn.domain.member.Nickname;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-class EmailTest {
+class NicknameTest {
 
     @Test
     void create() {
-        Email email = new Email("jocture@gmail.com");
-        assertThat(email.value()).isEqualTo("jocture@gmail.com");
+        Nickname nickname = new Nickname("jocture");
+        Assertions.assertThat(nickname.value()).isEqualTo("jocture");
     }
 
     @ParameterizedTest
     @ValueSource(strings = {
-        "jocture", "@abc.com", "j@a.c"
+        "JJ", "Lim", "123456789012345678901",
+        ".jocture", "_jocture", "-jocture",
+        "jocture*", "joc ture"
     })
     void create_fail(String value) {
-        assertThatThrownBy(() -> new Email(value))
+        assertThatThrownBy(() -> new Nickname(value))
             .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
