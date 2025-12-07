@@ -1,5 +1,8 @@
 package jocture.joclearn.application.member.service;
 
+import jocture.joclearn.application.member.data.dto.MemberJoinRequest;
+import jocture.joclearn.domain.member.Member;
+
 /**
  * MethodName     : 
  * description    :
@@ -16,7 +19,7 @@ package jocture.joclearn.application.member.service;
  */
 public interface MemberWriter {
     /** 회원가입 */
-    void joinMember();
+    Member joinMember(MemberJoinRequest request);
     /** 회원정보 수정 */
     void updateMember();
     /** 회원 탈퇴 */

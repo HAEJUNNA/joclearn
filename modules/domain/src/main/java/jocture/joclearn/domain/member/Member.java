@@ -1,12 +1,22 @@
 package jocture.joclearn.domain.member;
 
+import jakarta.persistence.*;
+
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 //객체 불변성을 위해 필드에 private final을 선언하는게 좋다.
 //하지만 도메인 객체는 불변 객체로 만드는데 제약이 있다.
 //물론 불변 객체로 만드는 방법도 있다.
 @Getter
+@Table(name= "member")
+@Entity
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
+
+    @Id @GeneratedValue @Column(name = "member_id")
+    private Integer id;
 
     /**
      * 1. 닉네임 규칙과 이메일 규칙을 다른 곳에서도 사용해야 한다면 어떻게 해야할까? 중복 로직?
@@ -14,10 +24,13 @@ public class Member {
      * 3. 부가 로직 때문에 도메인 객체인 Member의 핵심 로직이 잘 보이지 않을 수 있다.
      * - 이런 문제들을 어떻게 해결할 수 있을까?
      */
-
+    @Column(name = "nickname")
     private Nickname nickname;
+    @Column(name = "email")
     private Email email;
+    @Column(name = "password_hash")
     private String passwordHash;
+    @Column(name = "member_status")
     private MemberStatus status;
 
     private Member(String nickname, String email, String passwordHash, MemberStatus status) {
