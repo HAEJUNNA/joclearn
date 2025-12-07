@@ -42,6 +42,10 @@ subprojects {
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
 }
 
 // app-boot 모두의 의존성을 가짐 20-01-layered-architecture 파일 참고
@@ -70,22 +74,4 @@ project(":modules:infra") {
     dependencies {
         implementation(project(":modules:domain"))
     }
-}
-
-
-dependencies {//root src 설정이 들어있다. 서브는 또 설정해줘야한다.
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-
-    runtimeOnly("com.h2database:h2")
-
-    compileOnly("org.projectlombok:lombok")
-    annotationProcessor("org.projectlombok:lombok")
-
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
 }
