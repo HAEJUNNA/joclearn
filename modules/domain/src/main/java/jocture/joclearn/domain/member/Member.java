@@ -19,10 +19,12 @@ public class Member {
     @Column(name = "member_id")
     private Integer id;
 
-    @Column(name = "nickname")
+    @Embedded
+    @AttributeOverride(name = "value", column = @Column(name = "nickname"))
     private Nickname nickname;
 
-    @Column(name = "email")
+    @Embedded
+    @AttributeOverride(name = "value", column = @Column(name = "email"))
     private Email email;
 
     @Column(name = "password_hash")
