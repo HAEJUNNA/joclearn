@@ -1,4 +1,4 @@
-package jocture.joclearn.member;
+package jocture.joclearn.domain.member;
 
 import jakarta.persistence.*;
 
@@ -27,6 +27,9 @@ public class Member {
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "nickname"))
     private Nickname nickname;
+
+    @Embedded
+    @AttributeOverride(name = "value", column = @Column(name = "email"))
     private Email email;
 
     @Column(name = "password_hash")
