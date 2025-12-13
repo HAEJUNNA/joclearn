@@ -2,6 +2,7 @@ plugins {
     java
     id("org.springframework.boot") version "3.5.7"
     id("io.spring.dependency-management") version "1.1.7"
+    id("java-test-fixtures") // 플러그인 아이디로 추가 해줘야함
 }
 
 group = "jocture"
@@ -24,6 +25,7 @@ subprojects {
     apply(plugin = "java")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
+    apply(plugin = "java-test-fixtures") // Domain/tests : testFixtures를 적용하기 위한 플러그인
 
     repositories {
         mavenCentral()
@@ -34,6 +36,7 @@ subprojects {
         annotationProcessor("org.projectlombok:lombok")
 
         testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testFixturesImplementation("org.springframework.boot:spring-boot-starter-test") //testFixtures에서도 해당 디펜던시를 사용하겠다는 의미
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     }
 
@@ -63,16 +66,19 @@ project(":modules:application") {
         implementation(project(":modules:domain"))
 
         testImplementation(project(":modules:app-boot"))
+        testImplementation(testFixtures(project(":modules:domain")))
     }
 }
 
 project(":modules:domain") {
     dependencies {
+        testImplementation(testFixtures(project(":modules:infra")))
     }
 }
 
 project(":modules:infra") {
     dependencies {
         implementation(project(":modules:domain"))
+        testFixturesImplementation(project(":modules:domain"))
     }
 }

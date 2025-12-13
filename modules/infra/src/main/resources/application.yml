@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    show-sql: true
+logging:
+  level:
+    org.hibernate:
+      SQL : debug
+      orm.jdbc.bind: trace
+      orm.jdbc.extract: trace

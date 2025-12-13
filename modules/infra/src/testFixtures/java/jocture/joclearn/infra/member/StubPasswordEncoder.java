@@ -1,4 +1,6 @@
-package jocture.joclearn.domain.member;
+package jocture.joclearn.infra.member;
+
+import jocture.joclearn.domain.member.PasswordEncoder;
 
 public class StubPasswordEncoder implements PasswordEncoder {
 
