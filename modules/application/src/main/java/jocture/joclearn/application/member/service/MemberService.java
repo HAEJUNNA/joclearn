@@ -8,32 +8,23 @@ import jocture.joclearn.domain.member.MemberRepository;
 import jocture.joclearn.domain.member.PasswordEncoder;
 import lombok.RequiredArgsConstructor;
 
-/**
- * MethodName     : 
- * description    :
- * @param         : 
- * @return        :
- * ===========================================================
- * DATE              AUTHOR             NOTE
- * -----------------------------------------------------------
- * 2025-11-29        NAHAEJUN       최초 생성
- */
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class MemberService implements MemberWriter,MemberReadr {
+public class MemberService implements MemberReader, MemberWriter {
 
     private final PasswordEncoder passwordEncoder;
     private final MemberRepository memberRepository;
 
-    @Override public void getMembers() {
+    @Override
+    public void getMembers() {
 
     }
 
-    @Override public void getMember() {
+    @Override
+    public void getMember() {
 
     }
-
 
     @Override
     @Transactional

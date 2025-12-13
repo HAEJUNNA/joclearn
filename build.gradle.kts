@@ -20,12 +20,7 @@ configurations {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
 subprojects {
-
     apply(plugin = "java")
     apply(plugin = "org.springframework.boot")
     apply(plugin = "io.spring.dependency-management")
@@ -34,8 +29,7 @@ subprojects {
         mavenCentral()
     }
 
-    dependencies {//root src 설정이 들어있다. 서브는 또 설정해줘야한다.
-
+    dependencies {
         compileOnly("org.projectlombok:lombok")
         annotationProcessor("org.projectlombok:lombok")
 
@@ -67,6 +61,13 @@ project(":modules:presentation") {
 project(":modules:application") {
     dependencies {
         implementation(project(":modules:domain"))
+
+        testImplementation(project(":modules:app-boot"))
+    }
+}
+
+project(":modules:domain") {
+    dependencies {
     }
 }
 

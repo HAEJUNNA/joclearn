@@ -1,13 +1,11 @@
-package domain;
-
+package jocture.joclearn.domain.member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import jocture.joclearn.domain.member.Member;
+import jocture.joclearn.member.Member;
 import jocture.joclearn.domain.member.MemberStatus;
 import jocture.joclearn.domain.member.PasswordEncoder;
-
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberTest {

@@ -1,4 +1,5 @@
-package domain;
+package jocture.joclearn.domain.member;
+
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
