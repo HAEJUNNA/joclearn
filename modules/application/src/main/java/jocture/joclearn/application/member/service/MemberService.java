@@ -1,7 +1,6 @@
 package jocture.joclearn.application.member.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import jocture.joclearn.application.member.data.dto.MemberJoinRequest;
 import jocture.joclearn.domain.common.exception.NotFoundException;
 import jocture.joclearn.domain.member.Member;
@@ -10,7 +9,6 @@ import jocture.joclearn.domain.member.PasswordEncoder;
 import lombok.RequiredArgsConstructor;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MemberService implements MemberReader, MemberWriter {
 
@@ -30,7 +28,6 @@ public class MemberService implements MemberReader, MemberWriter {
     }
 
     @Override
-    @Transactional
     public Member joinMember(MemberJoinRequest request) {
         //수많은 멤버 필드 생성을 하나로 가릴수 있다?
         //Member member = Member.create(request.nickname(), request.email(), request.password(), passwordEncoder);
@@ -43,13 +40,11 @@ public class MemberService implements MemberReader, MemberWriter {
     }
 
     @Override
-    @Transactional
     public void updateMember() {
 
     }
 
     @Override
-    @Transactional
     public void leaveMember() {
 
     }
