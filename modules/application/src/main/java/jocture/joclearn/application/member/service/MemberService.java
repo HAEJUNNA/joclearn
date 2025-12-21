@@ -1,6 +1,8 @@
 package jocture.joclearn.application.member.service;
 
 import org.springframework.stereotype.Service;
+import java.util.List;
+import jocture.joclearn.domain.member.dto.MemberCondition;
 import jocture.joclearn.application.member.data.dto.MemberJoinRequest;
 import jocture.joclearn.domain.common.exception.NotFoundException;
 import jocture.joclearn.domain.member.Member;
@@ -16,8 +18,8 @@ public class MemberService implements MemberReader, MemberWriter {
     private final MemberRepository memberRepository;
 
     @Override
-    public void getMembers() {
-
+    public List<Member> getMembers(MemberCondition condition) {
+        return memberRepository.findAll(condition);
     }
 
     @Override
