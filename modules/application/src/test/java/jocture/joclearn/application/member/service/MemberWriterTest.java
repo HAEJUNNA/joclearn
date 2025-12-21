@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 import jocture.joclearn.application.member.data.dto.MemberJoinRequest;
 import jocture.joclearn.domain.member.Email;
@@ -15,13 +16,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional //트랜잭션이 일어난 후에 롤백된다.
-//@Commit
+//@Commit // 전체컴잇
 //@Rollback(false)
 @Import(InfraTestConfig.class)
 class MemberWriterTest {
 
     @Autowired MemberWriter memberWriter;
 
+    //@Commit // 특정메서드 컴잇
     @Test
     void joinMember() {
         //BDD 패턴 - Given, When, Then
