@@ -2,8 +2,8 @@ package jocture.joclearn.domain.member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import jocture.joclearn.infra.member.StubPasswordEncoder;
 
-import jocture.joclearn.member.Member;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class MemberTest {
@@ -13,17 +13,18 @@ class MemberTest {
 
     @BeforeEach
     void setUp() {
-        this.passwordEncoder = new PasswordEncoder() {
-            @Override
-            public String encode(String rawPassword) {
-                return rawPassword.toUpperCase();
-            }
-
-            @Override
-            public boolean matches(String rawPassword, String encodedPassword) {
-                return encode(rawPassword).equals(encodedPassword);
-            }
-        };
+        //this.passwordEncoder = new PasswordEncoder() {
+        //    @Override
+        //    public String encode(String rawPassword) {
+        //        return rawPassword.toUpperCase();
+        //    }
+        //
+        //    @Override
+        //    public boolean matches(String rawPassword, String encodedPassword) {
+        //        return encode(rawPassword).equals(encodedPassword);
+        //    }
+        //};
+        this.passwordEncoder = new StubPasswordEncoder();
         this.member = Member.create("jjlim", "jjlim@abc.com", "abcd1234", passwordEncoder);
     }
 

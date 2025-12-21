@@ -33,7 +33,10 @@ public class MemberService implements MemberReader, MemberWriter {
         //Member member = Member.create(request.nickname(), request.email(), request.password(), passwordEncoder);
         // request.toEntity = request를 엔티티를 만든다.
         Member member = request.toEntity(passwordEncoder);
-        return memberRepository.save(member);
+        System.out.println("save() 호출 전");
+        Member savedMember = memberRepository.save(member);
+        System.out.println("save() 호출 후");
+        return savedMember;
     }
 
     @Override

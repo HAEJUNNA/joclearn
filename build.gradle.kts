@@ -34,7 +34,6 @@ subprojects {
     dependencies {
         compileOnly("org.projectlombok:lombok")
         annotationProcessor("org.projectlombok:lombok")
-
         testImplementation("org.springframework.boot:spring-boot-starter-test")
         testFixturesImplementation("org.springframework.boot:spring-boot-starter-test") //testFixtures에서도 해당 디펜던시를 사용하겠다는 의미
         testRuntimeOnly("org.junit.platform:junit-platform-launcher")
@@ -64,9 +63,8 @@ project(":modules:presentation") {
 project(":modules:application") {
     dependencies {
         implementation(project(":modules:domain"))
-
         testImplementation(project(":modules:app-boot"))
-        testImplementation(testFixtures(project(":modules:domain")))
+        testImplementation(testFixtures(project(":modules:infra")))
     }
 }
 

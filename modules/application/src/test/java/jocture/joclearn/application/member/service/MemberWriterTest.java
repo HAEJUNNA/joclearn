@@ -9,11 +9,14 @@ import jocture.joclearn.application.member.data.dto.MemberJoinRequest;
 import jocture.joclearn.domain.member.Email;
 import jocture.joclearn.domain.member.Member;
 import jocture.joclearn.domain.member.Nickname;
+import jocture.joclearn.infra.config.InfraTestConfig;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional //트랜잭션이 일어난 후에 롤백된다.
+//@Commit
+//@Rollback(false)
 @Import(InfraTestConfig.class)
 class MemberWriterTest {
 
@@ -21,10 +24,15 @@ class MemberWriterTest {
 
     @Test
     void joinMember() {
+        //BDD 패턴 - Given, When, Then
+
+        //Given
         String nicknameValue = "jocture";
         String emailValue = "joc@ture.com";
         String password = "abcd1234";
         MemberJoinRequest request = new MemberJoinRequest(nicknameValue, emailValue, password);
+
+        //When
         Member member = memberWriter.joinMember(request);
 
         assertThat(member.getId()).isPositive();
