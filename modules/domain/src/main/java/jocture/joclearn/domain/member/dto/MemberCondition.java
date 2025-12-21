@@ -13,8 +13,14 @@ import jocture.joclearn.domain.member.MemberStatus;
  * 2025-12-21        NAHAEJUN       최초 생성
  */
 public record MemberCondition(
-    Integer memberId,
-    String nickName,
+    String nicknameLike,
     String emailLike,
     MemberStatus status
-) { }
+) {
+
+    public static MemberCondition empty() {
+        return new MemberCondition("", "", null);
+    }
+
+
+}
