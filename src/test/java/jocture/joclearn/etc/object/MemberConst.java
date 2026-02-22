@@ -12,14 +12,14 @@ import lombok.NoArgsConstructor;
  * -----------------------------------------------------------
  * 2026-01-24        NAHAEJUN       최초 생성
  */
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MemberConst {
 
     ////new로 생성할수 없음
     //private MemberConst(){}
 
-    public static final String EMAIL = "<EMAIL>";
-    public static final String PASSWORD = "<PASSWORD>";
-    public static final String NICKNAME = "haejun";
-    public static final String NEW_PASSWORD = "<PASSWORD>";
+    public static final String EMAIL = "joc@ture.com";
+    public static final String NICKNAME = "jocture";
+    public static final String PHONE = "010-1234-1234";
+    public static final String ADDRESS = "서울시";
 }

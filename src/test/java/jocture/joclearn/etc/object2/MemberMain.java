@@ -12,12 +12,14 @@ package jocture.joclearn.etc.object2;
  */
 public class MemberMain {
 
-    public static void main(String[] args) {
-        Member member = new Member();
-        member.setNickname("haejun");
-        member.setEmail("<EMAIL>");
-        member.setPhone("010-1234-5678");
-        member.setAddress("서울특별시 강남구 강남대로 123");
-        System.out.println(">>>> member: " + member);
+    static void main() {
+        Member m1 = new Member(MemberConst.EMAIL, MemberConst.NICKNAME, MemberConst.PHONE, MemberConst.ADDRESS);
+        System.out.println(">>> m1: " + m1);
+
+        Member m2 = new Member(MemberConst.EMAIL, MemberConst.NICKNAME);
+        System.out.println(">>> m2: " + m2);
+
+        Member m3 = new Member(MemberConst.EMAIL, MemberConst.NICKNAME, MemberConst.PHONE);
+        System.out.println(">>> m3: " + m3);
     }
 }

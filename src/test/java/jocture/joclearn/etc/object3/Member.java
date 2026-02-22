@@ -23,14 +23,26 @@ public class Member {
     private final String phone;
     private final String address;
 
-    private Member(String email, String nickName, String phone, String address) {
+    private Member(String email, String nickname, String phone, String address) {
         this.email = email;
-        this.nickName = nickName;
+        this.nickName = nickname;
         this.phone = phone;
         this.address = address;
     }
 
-    public static Member withAll(String email, String nickName, String phone, String address) {
-        return new Member(email, nickName, phone, address);
+    public static Member withAll(String email, String nickname, String phone, String address) {
+        return new Member(email, nickname, phone, address);
+    }
+
+    public static Member withBasic(String email, String nickname) {
+        return new Member(email, nickname, null, null);
+    }
+
+    public static Member withBasicAndPhone(String email, String nickname, String phone) {
+        return new Member(email, nickname, phone, null);
+    }
+
+    public static Member withBasicAndAddress(String email, String nickname, String address) {
+        return new Member(email, nickname, null, address);
     }
 }

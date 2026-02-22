@@ -23,12 +23,12 @@ public class Member {
     private final String phone;
     private final String address;
 
+    public Member(String email, String nickName) {
+        this(email, nickName, null);
+    }
 
-    Member(String email, String nickName, String phone) {
-        this.email = email;
-        this.nickName = nickName;
-        this.phone = phone;
-        this.address = null;
+    public Member(String email, String nickName, String phone) {
+        this(email, nickName, phone, null);
     }
 
     public Member(String email, String nickName, String phone, String address) {

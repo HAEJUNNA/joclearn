@@ -14,6 +14,11 @@ package jocture.joclearn.etc.object4;
  * -----------------------------------------------------------
  * 2026-01-24        NAHAEJUN       최초 생성
  */
+
+/**
+ * 파라미터 객체 사용
+ */
+@ToString
 public class Member4 {
 
     private final String email;
@@ -21,19 +26,26 @@ public class Member4 {
     private final String phone;
     private final String address;
 
-    private Member(String email, String nickName, String phone, String address) {
+    private Member4(String email, String nickname, String phone, String address) {
         this.email = email;
-        this.nickName = nickName;
+        this.nickName = nickname;
         this.phone = phone;
         this.address = address;
     }
 
-    public Member4(){
-
+    public Member4(BasicInfo basicInfo) {
+        this(basicInfo.email(), basicInfo.nickname, null, null);
     }
 
-    public record BasicInfo(String email, String nickName){}
+    public Member4(BasicInfo basicInfo, ExtraInfo extraInfo) {
+        this(basicInfo.email(), basicInfo.nickname(), extraInfo.phone(), extraInfo.address());
+    }
 
-    public record ExtraInfo(String phone, String address){}
+
+    public record BasicInfo(String email, String nickname) {
+    }
+
+    public record ExtraInfo(String phone, String address) {
+    }
     
 }

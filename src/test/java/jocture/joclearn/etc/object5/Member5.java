@@ -42,7 +42,12 @@ public class Member5 {
         private String phone;
         private String address;
 
-        private Builder(){}
+        private Builder() { }
+
+        //선택2
+        public static Builder builder() {
+            return new Builder();
+        }
 
         public Builder email(String email){
             this.email = email;
